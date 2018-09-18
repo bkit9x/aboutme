@@ -64,9 +64,9 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: #a1a1f1;
   text-align: left;
-  background-color: #fff;
+  background-color:black;
 }
 
 [tabindex="-1"]:focus {
@@ -480,6 +480,9 @@ mark,
 .img-fluid {
   max-width: 100%;
   height: auto;
+  border-radius:50%;
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
 }
 
 .img-thumbnail {
@@ -7638,6 +7641,7 @@ button.bg-dark:focus {
 .pb-3,
 .py-3 {
   padding-bottom: 1rem !important;
+  font-weight: bold;
 }
 
 .pl-3,

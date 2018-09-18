@@ -14,7 +14,7 @@ a:hover {
     letter-spacing: 0.6px;
 }
 
-body {background-color: #f9f9f9; margin:0; padding:0;}
+body {background-color:black; margin:0; padding:0;}
 
 .avatarBox img {
 	box-shadow: 0px 0px 4px 1px #373141ab;
@@ -34,7 +34,7 @@ body {background-color: #f9f9f9; margin:0; padding:0;}
 
 .name p:first-child {
 	font-weight: 700;
-	color: #585858;
+	color: #c1a1f1;
 	font-size: 24pt;
 	padding-bottom: 0px;
 	margin-bottom:  0px;
@@ -95,7 +95,7 @@ body {background-color: #f9f9f9; margin:0; padding:0;}
 }
 
 .menu {
-	background-color: #f3f3f3;
+	background-color: #171717;
 	width: 100%;
 	top: 0;
 	position: fixed;
@@ -105,7 +105,7 @@ body {background-color: #f9f9f9; margin:0; padding:0;}
 
 .boldd {
 	font-weight: 600;
-	color: #5a5a5af2;
+	color: #c1a1f1;
 }
 
 .menuMore {
@@ -118,7 +118,7 @@ body {background-color: #f9f9f9; margin:0; padding:0;}
 }
 
 .profile {
-	background-color: white;
+	background-color: #090909;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -168,7 +168,7 @@ body {background-color: #f9f9f9; margin:0; padding:0;}
 }
 
 .detailInfo {
-	color: #373737;
+	color: #a1a1f1;
 }
 
 .license a {
@@ -176,3 +176,8 @@ body {background-color: #f9f9f9; margin:0; padding:0;}
 	color: #6fb9a475;
 }
 
+bo {
+	border-radius:50%;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+	}
