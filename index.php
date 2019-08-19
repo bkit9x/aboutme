@@ -47,11 +47,11 @@
 
 							<div class="detailInfo">
 								<div class="row my-2">
-									<div class="col-lg-4 col-12 boldd">Tên</div>
+									<div class="col-lg-4 col-12 boldd">Họ Tên</div>
 									<div class="col-lg-8 col-12 b">Nguyễn Hoàng Kha</div>
 								</div>
 								<div class="row my-2">
-									<div class="col-lg-4 col-12 boldd">Trường</div>
+									<div class="col-lg-4 col-12 boldd">Học Tại</div>
 									<div class="col-lg-8 col-12 b">ĐH SPKT Vĩnh Long</div>
 								</div>
 								<div class="row my-2">
@@ -59,7 +59,7 @@
 									<div class="col-lg-8 col-12 b">Công nghệ thông tin</div>
 								</div>
 								<div class="row">
-									<div class="col-lg-4 col-12 boldd">Năm Sinh</div>
+									<div class="col-lg-4 col-12 boldd">Sinh Năm</div>
 									<div class="col-lg-8 col-12 b">1999</div>
 								</div>
 
