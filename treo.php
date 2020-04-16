@@ -21,8 +21,8 @@
         );
         curl_setopt($ch, CURLOPT_POSTFIELDS, $param);
         $d = curl_exec($ch);
-        var_dump(curl_getinfo($ch));
-        echo htmlentities($d);
+        $url = curl_getinfo($ch);
+        echo $url['url'];
         curl_close($ch);
     }
 ?>
