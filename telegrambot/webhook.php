@@ -1,10 +1,11 @@
 <?php
-$message = json_decode(file_get_contents("php://input"));
+$message = json_decode(file_get_contents("php://input"),1);
 if ($message['text'] == "/tkbtoday") {
     $msg = "không có tkb";
     send($message['from']['id'], $msg);
 }
-
+echo "a";
+//send("440899389", "anbc");
 
 
 
