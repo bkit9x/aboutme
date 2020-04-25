@@ -104,7 +104,7 @@ if ($message['text'] == "/tkbtoday") {
         send($id, $text);        
     }
 }
-elseif(){
+elseif($message['text'] == "/tkbtomorrow"){
     $rs = getTKBtomorrow("17004073", "24");
     foreach ($rs as $mon) {
         $text = "Mã: ".$mon['ma']."\nTên: ".$mon['ten']."\nTiết: ".$mon['tiet']."\nLớp: ".$mon['lop'];
