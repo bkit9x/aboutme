@@ -28,6 +28,33 @@ function getTKB($mssv, $hocky=0)
     $e = explode("</table>",$d[1]);
     return $e[0]; 
 }
+function getTKBtomorrow($mssv)
+{
+    $data = getTKB($mssv);
+    $rs = array();
+    $t = date("N", time()+3600*24)+1;
+    $thu = "";
+    if ($t==8) {
+        $thu = "Chủ nhật";    
+    }
+    else{
+        $thu = "Thứ ".$t;
+    }
+    preg_match_all("#<tr><td>".$thu."</td>(.*?)</tr>#",$data,$today);
+    foreach ($today[1] as $key => $value) {
+        preg_match_all("#<td>(.*?)</td>#",$value,$detail);
+        if (preg_match("/warning/", $detail[1][0])) {
+            $e = explode('strong>', $detail[1][0]);
+            $rs[$key]['ma'] = strip_tags($e[0]);
+            $rs[$key]['ten'] = strip_tags($e[1]);
+            $rs[$key]['tiet'] = $detail[1][1];
+            $rs[$key]['lop'] = strip_tags($detail[1][2]);
+            $rs[$key]['thongtin'] = strip_tags(str_replace('</br>',' ',$detail[1][3]));
+        }            
+    }
+    return $rs;
+}
+
 function getTKBtoday($mssv)
 {
     $data = getTKB($mssv);
@@ -54,6 +81,7 @@ function getTKBtoday($mssv)
     }
     return $rs;
 }
+
 function send($id, $msg)
 {
     $bot = "bot602124013:AAG78A2jgbuN8JK_kcLtpP4BIwK6FbWu7cA";
@@ -66,7 +94,6 @@ function send($id, $msg)
 //code
 
 $update = json_decode(file_get_contents("php://input"),1);
-// $update = json_decode(file_get_contents("json.json"),1);
 
 $message = $update['message'];
 $id = $message['from']['id'];
@@ -77,5 +104,11 @@ if ($message['text'] == "/tkbtoday") {
         send($id, $text);        
     }
 }
-
+elseif(){
+    $rs = getTKBtomorrow("17004073", "24");
+    foreach ($rs as $mon) {
+        $text = "Mã: ".$mon['ma']."\nTên: ".$mon['ten']."\nTiết: ".$mon['tiet']."\nLớp: ".$mon['lop'];
+        send($id, $text);        
+    }
+}
 ?>
