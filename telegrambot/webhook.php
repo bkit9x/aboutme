@@ -94,21 +94,32 @@ function send($id, $msg)
 //code
 
 $update = json_decode(file_get_contents("php://input"),1);
+// $update = json_decode(file_get_contents("json.json"),1);
 
 $message = $update['message'];
 $id = $message['from']['id'];
 if ($message['text'] == "/tkbtoday") {
     $rs = getTKBtoday("17004073", "24");
-    foreach ($rs as $mon) {
-        $text = "Mã: ".$mon['ma']."\nTên: ".$mon['ten']."\nTiết: ".$mon['tiet']."\nLớp: ".$mon['lop'];
-        send($id, $text);        
+    if ($rs) {
+        foreach ($rs as $mon) {
+            $text = "Mã: ".$mon['ma']."\nTên: ".$mon['ten']."\nTiết: ".$mon['tiet']."\nLớp: ".$mon['lop'];
+            send($id, $text);        
+        }
+    }
+    else{
+        send($id, "Không có lịch học");
     }
 }
 elseif($message['text'] == "/tkbtomorrow"){
     $rs = getTKBtomorrow("17004073", "24");
-    foreach ($rs as $mon) {
-        $text = "Mã: ".$mon['ma']."\nTên: ".$mon['ten']."\nTiết: ".$mon['tiet']."\nLớp: ".$mon['lop'];
-        send($id, $text);        
+    if ($rs) {
+        foreach ($rs as $mon) {
+            $text = "Mã: ".$mon['ma']."\nTên: ".$mon['ten']."\nTiết: ".$mon['tiet']."\nLớp: ".$mon['lop'];
+            send($id, $text);        
+        }
+    }
+    else{
+        send($id, "Không có lịch học");
     }
 }
 ?>
