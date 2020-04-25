@@ -2,7 +2,7 @@
 $message = json_decode(file_get_contents("php://input"));
 if ($message['text'] == "/tkbtoday") {
     $msg = "không có tkb";
-    send($id, $msg);
+    send($message['from']['id'], $msg);
 }
 
 
