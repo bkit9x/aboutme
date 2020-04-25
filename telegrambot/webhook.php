@@ -1,18 +1,18 @@
 <?php
 //func
-function curl($url, $param=[])
+function curl($url, $param=NULL)
 {
     $ch =curl_init();
     $opt = array(
-        "CURLOPT_URL" => $url,
-        "CURLOPT_RETURNTRANSFER" => true,
-        "CURLOPT_SSL_VERIFYPEER" => false,
-        "CURLOPT_FOLLOWLOCATION" => true,
-        "CURLOPT_HEADER" => false,
-        "CURLOPT_USERAGENT" => "'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6'",
+        CURLOPT_URL => $url,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_SSL_VERIFYPEER => false,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HEADER => false,
+        CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6',
     );
-    if (count($param)>0)
-        $opt["CURLOPT_POSTFIELDS"] = $param;
+    if ($param)
+        $opt[CURLOPT_POSTFIELDS] = $param;
     curl_setopt_array($ch, $opt);
     $d = curl_exec($ch);
     curl_close($ch);
@@ -21,16 +21,16 @@ function curl($url, $param=[])
 function getTKB($mssv, $hocky=0)
 {
     if (!$hocky)
-        $hocky = json_decode($this->curl("https://ems.vlute.edu.vn/api/danhmuc/getdshocky"),1)[0]['id'];
+        $hocky = json_decode(curl("https://ems.vlute.edu.vn/api/danhmuc/getdshocky"),1)[0]['id'];
     $param = array("hocky"=>$hocky,"masv"=>$mssv);
-    $tkb = $this->curl("https://ems.vlute.edu.vn/vTKBSinhVien/ViewTKBSV", $param);
+    $tkb = curl("https://ems.vlute.edu.vn/vTKBSinhVien/ViewTKBSV", $param);
     $d = explode("<table class='table table-responsive table-striped'>",$tkb);
     $e = explode("</table>",$d[1]);
     return $e[0]; 
 }
 function getTKBtoday($mssv)
 {
-    $data = $this->getTKB($mssv);
+    $data = getTKB($mssv);
     $rs = array();
     $t = date("N", time())+1;
     $thu = "";
@@ -66,12 +66,14 @@ function send($id, $msg)
 //code
 
 $update = json_decode(file_get_contents("php://input"),1);
+// $update = json_decode(file_get_contents("json.json"),1);
+
 $message = $update['message'];
 $id = $message['from']['id'];
 if ($message['text'] == "/tkbtoday") {
     $rs = getTKBtoday("17004073", "24");
     foreach ($rs as $mon) {
-        $text = "Mã: ".$mon['ma']."\n Tên: ".$mon['ten']."\n Tiết: ".$mon['tiet']."\n Lớp: ".$mon['lop']."\n Thông tin: ".$mon['thongtin'];
+        $text = "Mã: ".$mon['ma']."\nTên: ".$mon['ten']."\nTiết: ".$mon['tiet']."\nLớp: ".$mon['lop'];
         send($id, $text);        
     }
 }
