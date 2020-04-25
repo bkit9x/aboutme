@@ -12,6 +12,7 @@ if ($message['text'] == "/tkbtoday") {
 
 function send($id, $msg)
 {
+    $bot = "bot602124013:AAG78A2jgbuN8JK_kcLtpP4BIwK6FbWu7cA";
     if (!empty($id) && !empty($msg)) {
         $msg = urlencode($msg);
         file_get_contents("https://api.telegram.org/$bot/sendMessage?chat_id=$id&text=$msg");
