@@ -20,6 +20,12 @@ body {background-color:black; margin:0; padding:0;}
 	box-shadow: 0px 0px 4px 1px #373141ab;
 }
 
+.avatarBox img:hover {
+	transform: rotateY(360deg);
+	transition: 10s;
+
+}
+
 .menu h3 {
 	color: #76cc9c;
 }
@@ -108,9 +114,6 @@ body {background-color:black; margin:0; padding:0;}
 	color: #c1a1f1;
 }
 
-.menuMore {
-	
-}
 
 .b {
 	text-shadow: 0px 0px 0.2px #44227bd1;
